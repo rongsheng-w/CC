@@ -1,32 +1,16 @@
-cmake_minimum_required(VERSION 3.10.0)
+project(process)
 
-project(planning)
-
-set(CMAKE_CXX_STANDARD 17)
-
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
-# linux exe and dll output path
-# windows: cmake_runtime_output_directory
-
-aux_source_directory(${PROJECT_SOURCE_DIR}/src SRC_LISTS)
-add_library(common
+add_library(${PROJECT_NAME}
 SHARED
-${SRC_LISTS}
+process.cpp
 )
 
-target_include_directories(common
+target_include_directories(${PROJECT_NAME}
 PUBLIC
-${PROJECT_SOURCE_DIR}/include
+${PNC_MAP_Dir}
 )
 
-add_executable(planning_main planning_main.cpp)
-
-target_include_directories(planning_main
+target_link_libraries(${PROJECT_NAME}
 PUBLIC
-${PROJECT_SOURCE_DIR}/include
-)
-
-target_link_libraries(planning_main
-PUBLIC
-common
+pnc_map
 )
