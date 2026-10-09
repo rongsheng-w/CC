@@ -9,6 +9,8 @@ project(planning
 
 set(CMAKE_CXX_STANDARD 17)
 
+enable_testing()
+
 #变量设置
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 # linux exe and dll output path
@@ -19,4 +21,5 @@ set(PNC_MAP_Dir ${CMAKE_SOURCE_DIR}/src/pnc_map)
 
 #添加子目录
 add_subdirectory(src)
+add_subdirectory(test/map_test)
 
